@@ -1,41 +1,35 @@
-# GPT + ELK Stack Logger (🚧 Under Construction)
+# GPT + ELK Stack Logger (Under Construction)
 
-This is a simple proof-of-concept project that integrates OpenAI's GPT model with the ELK stack (Elasticsearch, Logstash, Kibana) for logging and visualizing AI prompts and responses.
+This is a basic logging tool that connects OpenAI's GPT model to the ELK stack (Elasticsearch and Kibana, optionally Logstash). It logs every prompt and response so you can visualize GPT behavior over time.
 
-## 📌 Purpose
+## What it does
 
-The goal is to:
-- Interact with OpenAI's GPT model via a basic terminal interface
-- Log both the prompt and GPT response to Elasticsearch
-- Visualize the conversation flow using Kibana dashboards
-- Lay the groundwork for future chatbot integrations (Discord, Web UI, etc.)
+- Sends prompts to GPT-4 from the command line
+- Logs both the prompt and the GPT response to Elasticsearch
+- Creates a searchable history of interactions
+- Future plans include hooking it into a chatbot or a simple web UI
 
-## 🧱 Stack
+## Tech Stack
 
-- **Python 3.11**
-- **OpenAI API (GPT-4)**
-- **Elasticsearch**
-- **Kibana**
-- *(Optional)* Logstash for advanced ingestion logic
-- **Docker Compose** for local ELK stack setup
-- **.env** file for configuration and API keys
+- Python 3.11
+- OpenAI API
+- Elasticsearch and Kibana
+- Docker Compose
+- `.env`-based configuration
 
-## 🛠️ Status
-
-> ⚠️ This project is **under construction** and currently only includes a CLI-based prototype. Additional features like chatbot integration, web API access, and auto-scaling logging pipelines are planned.
-
-## 🔐 Local Development
+## Getting Started (Local Setup)
 
 ```bash
-# Create virtual environment
+# Set up virtual environment
 py -3.11 -m venv venv
 .\venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Start ELK stack (requires Docker)
+# Start ELK stack (Docker required)
 docker-compose up -d
 
 # Run the app
 python app.py
+
