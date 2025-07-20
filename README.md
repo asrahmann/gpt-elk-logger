@@ -78,4 +78,5 @@ You can build visualizations using Kibana Lens, then save them to a dashboard. T
 - Web UI or chatbot interface
 - Prebuilt Kibana dashboards
 - Optional Logstash integration
+  Note: A basic logstash.conf is included for future development, but the current setup sends logs directly from Python to Elasticsearch for simplicity.
 - Dockerized app version for easier deployment
