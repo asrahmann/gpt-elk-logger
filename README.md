@@ -72,7 +72,7 @@ You can build visualizations using Kibana Lens, then save them to a dashboard. T
 To embed a dashboard screenshot, you can use:
 
 ```md
-![Kibana Dashboard](assets/dashboard-preview.png)
+<img width="2554" height="1124" alt="Kibana_Screenshot" src="https://github.com/user-attachments/assets/b4237ce2-4552-4d67-baec-a22641b6528d" />
 ```
 
 ## Future Plans
