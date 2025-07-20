@@ -69,10 +69,9 @@ Use Kibana to build dashboards based on fields like:
 
 You can build visualizations using Kibana Lens, then save them to a dashboard. This enables cost tracking, performance insights, and usage auditing over time.
 
-To embed a dashboard screenshot, you can use:
 
 ```md
-<img width="2554" height="1124" alt="Kibana_Screenshot" src="https://github.com/user-attachments/assets/b4237ce2-4552-4d67-baec-a22641b6528d" />
+![Kibana Dashboard](assets/kibana_dashboard.png)
 ```
 
 ## Future Plans
