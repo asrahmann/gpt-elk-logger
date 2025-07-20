@@ -1,35 +1,83 @@
-# GPT + ELK Stack Logger (Under Construction)
+# GPT + ELK Stack Logger
 
-This is a basic logging tool that connects OpenAI's GPT model to the ELK stack (Elasticsearch and Kibana, optionally Logstash). It logs every prompt and response so you can visualize GPT behavior over time.
+This is a lightweight logging tool that connects OpenAI's GPT model to the ELK stack (Elasticsearch and Kibana). It logs prompts, responses, and relevant metadata, enabling visibility into GPT usage and performance over time.
 
-## What it does
+## What It Does
 
 - Sends prompts to GPT-4 from the command line
-- Logs both the prompt and the GPT response to Elasticsearch
-- Creates a searchable history of interactions
-- Future plans include hooking it into a chatbot or a simple web UI
+- Logs the following data to Elasticsearch:
+  - Prompt and response
+  - Token counts (prompt, completion, total)
+  - Cost estimation in USD
+  - Latency in milliseconds
+  - Model used
+  - Timestamp
+- Enables full search and filtering in Kibana
+- Supports dashboards for analysis and visualization
 
 ## Tech Stack
 
 - Python 3.11
 - OpenAI API
-- Elasticsearch and Kibana
-- Docker Compose
+- Elasticsearch and Kibana (via Docker Compose)
 - `.env`-based configuration
 
 ## Getting Started (Local Setup)
 
+### 1. Set up your Python environment
+
 ```bash
-# Set up virtual environment
 py -3.11 -m venv venv
-.\venv\Scripts\activate
-
-# Install dependencies
+venv\Scripts\Activate
 pip install -r requirements.txt
+```
 
-# Start ELK stack (Docker required)
+### 2. Configure environment variables
+
+Create a `.env` file with the following content:
+
+```
+OPENAI_API_KEY=your-api-key
+ELASTIC_URL=http://localhost:9200
+ELASTIC_INDEX=gpt-logs
+```
+
+### 3. Start the ELK stack
+
+```bash
 docker-compose up -d
+```
 
-# Run the app
+Wait a minute or two for Elasticsearch and Kibana to become ready.
+
+### 4. Run the logger
+
+```bash
 python app.py
+```
 
+You’ll be prompted in the terminal. Each request will be sent to GPT-4 and logged to Elasticsearch.
+
+## Kibana Dashboards
+
+Use Kibana to build dashboards based on fields like:
+
+- Average latency (`latency_ms`)
+- Token usage trends (`prompt_tokens`, `completion_tokens`, `total_tokens`)
+- Total and average cost (`cost_usd`)
+- Requests per day or month
+
+You can build visualizations using Kibana Lens, then save them to a dashboard. This enables cost tracking, performance insights, and usage auditing over time.
+
+To embed a dashboard screenshot, you can use:
+
+```md
+![Kibana Dashboard](assets/dashboard-preview.png)
+```
+
+## Future Plans
+
+- Web UI or chatbot interface
+- Prebuilt Kibana dashboards
+- Optional Logstash integration
+- Dockerized app version for easier deployment
