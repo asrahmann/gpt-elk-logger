@@ -70,9 +70,8 @@ Use Kibana to build dashboards based on fields like:
 You can build visualizations using Kibana Lens, then save them to a dashboard. This enables cost tracking, performance insights, and usage auditing over time.
 
 
-```md
-![Kibana Dashboard](assets/kibana_dashboard.png)
-```
+
+![Kibana Dashboard](https://raw.githubusercontent.com/asrahmann/gpt-elk-logger/main/assets/kibana_dashboard.png)
 
 ## Future Plans
 
