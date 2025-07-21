@@ -1,3 +1,8 @@
+## Project Status: In Development
+
+This project is currently a work-in-progress. The primary goal was to quickly prototype the core logic and service integration. **The current configuration is designed for local development only and is not secure for a production environment.**
+
+
 # GPT + ELK Stack Logger
 
 This is a lightweight logging tool that connects OpenAI's GPT model to the ELK stack (Elasticsearch and Kibana). It logs prompts, responses, and relevant metadata, enabling visibility into GPT usage and performance over time.
@@ -80,3 +85,14 @@ You can build visualizations using Kibana Lens, then save them to a dashboard. T
 - Optional Logstash integration
   Note: A basic logstash.conf is included for future development, but the current setup sends logs directly from Python to Elasticsearch for simplicity.
 - Dockerized app version for easier deployment
+
+## Production Readiness Roadmap
+
+To make this project production-ready, the following security and best-practice measures need to be implemented:
+
+* [ ] **Enable ELK Stack Security:** Transition from the insecure `xpack.security.enabled=false` configuration to a secure setup with authentication and authorization.
+* [ ] **Implement TLS Encryption:** Configure the Elasticsearch cluster and all clients (Python, Kibana) to communicate over HTTPS to protect data in transit.
+* [ ] **Manage Secrets Properly:** Ensure all secrets (API keys, passwords) are loaded from environment variables or a dedicated secrets manager, and never hardcoded. The `.env` file must remain in `.gitignore`.
+* [ ] **Create a Restricted Service User:** Instead of using the `elastic` superuser, create a dedicated user with the minimum required permissions for the Python application to write logs.
+* [ ] **Add Input Sanitization:** Implement checks on user input to mitigate potential prompt injection attacks.
+* [ ] **Container Hardening:** Build a production Docker image with non-root users and minimal layers.
